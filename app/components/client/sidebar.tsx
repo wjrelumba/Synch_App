@@ -2,6 +2,7 @@
 
 import React from 'react';
 import LogoutBtn from './buttons/logout';
+import Link from 'next/link';
 
 interface SidebarProps {
     isOpen: boolean;
@@ -23,10 +24,13 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </div>
       <ul className="mt-4">
         <li className="mb-2">
-          <a href="/user/messages" className="hover:text-gray-300">Check Messages</a>
+          <Link href={'/user/profile'} className="hover:text-gray-300">Profile</Link>
         </li>
         <li className="mb-2">
-          <a href="/createNewTeam" className="hover:text-gray-300">Create a Team</a>
+          <Link href={'/user/messages'} className="hover:text-gray-300">Check Messages</Link>
+        </li>
+        <li className="mb-2">
+          <Link href={'/createNewTeam'} className='hover:text-gray-300'>Create a Team</Link>
         </li>
       </ul>
       <LogoutBtn />

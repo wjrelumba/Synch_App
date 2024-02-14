@@ -26,7 +26,9 @@ const Navbar = () => {
         </div>
         <div className="flex flex-grow justify-center"> {/* Added flex-grow and justify-center */}
           <Link href="/">
-            <h1 className="text-xl font-bold cursor-pointer">Synch</h1>
+            <div className='flex max-w-[6rem]'>
+              <img src="../synch-logo.png" alt="" />
+            </div>
           </Link>
         </div>
         <div className="hidden md:block">

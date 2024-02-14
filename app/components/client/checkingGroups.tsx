@@ -62,19 +62,23 @@
         )}
         {!loading && !groupsData && !userData && (
           <>
-            <h1>You do not have access to this content.</h1>
+          <div className='flex justify-center items-center bg-cover bg-center'>
+            <div className='absolute inset-0 bg-black'>
+              <h1 className='text-3xl font-mono'>You do not have access to this content.</h1>
+            </div>
+          </div>
           </>
         )}
         {!loading && (!groupsData || groupsData.length === 0) && userData && (
           <div>
-            <h1 className='text-3xl font-serif justify-center'>Welcome, {userData[0].name}!</h1>
+            <h1 className='text-3xl font-serif ml-3 mb-11 mt-4 justify-center'>Welcome, {userData[0].name}!</h1>
             <h1 className='text-xl font-serif'>No Groups joined...</h1>
           </div>
         )}
         {!loading && groupsData && groupsData.length > 0 && (
           <>
             <div>
-              <h1 className='flex text-3xl font-serif ml-3 mb-11 mt-1 justify-start'>Welcome, {userData[0].name}!</h1>
+              <h1 className='flex text-3xl font-serif ml-3 mb-11 mt-4 justify-start'>Welcome, {userData[0].name}!</h1>
               <ul className="flex flex-wrap justify-center">
                   {groupsData.map((group: any) => (
                       <Link key={group.team_id} href={`/team-group?data=${encodeURIComponent(group.team_id)}`}>

@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import ToastLayout from '../components/essentials/toastlayout'
 import { toast } from 'react-toastify'
+import Navbar from '../components/client/navbar'
 
 export default function Page({ searchParams }: { searchParams: { team_id: string } }) {
     const [taskName, setTaskName] = useState<any>('')
@@ -55,12 +56,19 @@ export default function Page({ searchParams }: { searchParams: { team_id: string
   }, [taskName])
   return (
     <ToastLayout>
-      <form method='POST' id='newTaskForm'>
-        <label htmlFor="taskName">Task Name: </label>
-        <input id='taskNameInput' type="text" className='text-black' onChange={taskNameHandler}/> <br />
-        <button id='addBtn' onClick={btnHandler}>Add Task</button>
-      </form> <br />
-        <button id='goBackBtn' onClick={goBack}>Go Back</button>
+      <Navbar />
+      <div className='flex justify-center items-center mt-10'>
+        <div className='flex flex-col bg-synchGray-100 rounded-lg px-10 py-6'>
+          <form method='POST' id='newTaskForm'>
+            <label className='text-xl font-mono' htmlFor="taskName">Task Name: </label>
+            <input id='taskNameInput' type="text" className='text-black font-mono rounded-lg px-3 py-1 border-yellow-700' onChange={taskNameHandler}/> <br />
+            <div className='flex justify-center mt-6'>
+              <button className='bg-synchBlue-50 hover:bg-synchBlue-100 px-4 font-mono py-3 rounded-lg min-w-[9rem] mr-1' id='addBtn' onClick={btnHandler}>Add Task</button>
+              <button className='bg-synchBlue-50 hover:bg-synchBlue-100 px-4 font-mono py-3 rounded-lg min-w-[9rem] ml-1' type="button" id='goBackBtn' onClick={goBack}>Go Back</button>
+            </div>
+          </form> <br />
+        </div>
+      </div>
     </ToastLayout> 
   )
 }
