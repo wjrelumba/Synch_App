@@ -21,6 +21,8 @@ export default function Page({ searchParams }: { searchParams: { team_id: string
   var unameValue: string = "";
   const statusValue: number = 0;
 
+  if(searchParams.team_id != undefined){}
+
   useEffect(() => {
     const credentialCheck = async () => {
       try {
@@ -70,7 +72,7 @@ export default function Page({ searchParams }: { searchParams: { team_id: string
     }
     credentialCheck()
   
-  },)
+  }, [])
   const unameHandler = (event: any) => {
     unameValue = event.target.value
   }

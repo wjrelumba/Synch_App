@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest){
-    if( req.method === 'GET'){
+export async function POST(req: NextRequest){
+    if( req.method === 'POST'){
         try {
             const cookieValue: any = cookies().get("userloggedin")
             if(cookieValue !== undefined){

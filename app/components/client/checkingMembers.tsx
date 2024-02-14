@@ -1,6 +1,6 @@
 'use client';
 // This component checks all the groups a user is in
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo } from 'react'
 
 type TeamID = {
     team_id: String,

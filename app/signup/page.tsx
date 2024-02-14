@@ -1,11 +1,10 @@
 'use client';
-import Link from 'next/link';
 // This component is create a new user for the app
 import React from 'react'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ToastLayout from '../components/essentials/toastlayout';
 import { useRouter } from 'next/navigation';
+import ToastLayout from '@/app/components/essentials/toastlayout';
 
 type UserData = {
     name: String,

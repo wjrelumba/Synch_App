@@ -11,6 +11,7 @@ export default function MessageDetails({ searchParams }: { searchParams: { req_i
     const [authenticated, setAuthenticated] = useState<any>(false)
     const [requestDetails, setRequestDetails] = useState<any>(null)
     const [loading, setLoading] = useState<any>(true)
+    if(searchParams.req_id != undefined){}
     useEffect(() => {
         const checkUserDetail = async () => {
             try {
@@ -58,7 +59,7 @@ export default function MessageDetails({ searchParams }: { searchParams: { req_i
         fetchDataFromDB()
         checkUserDetail()
         console.log(searchParams.req_id)
-    })
+    }, [])
 
     useEffect(() => {
     }, [requestDetails])

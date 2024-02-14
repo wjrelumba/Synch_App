@@ -13,6 +13,8 @@ export default function TasksDetails({ searchParams }: { searchParams: { task_id
     const [addNewMember, setAddNewMember] = useState<any>(false)
     const [username, setUsername] = useState<any>(null)
 
+    if(searchParams.task_id != undefined){}
+
     useEffect(() => {
         const getTaskName = async () => {
             try {

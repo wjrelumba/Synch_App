@@ -15,6 +15,9 @@ export default function Page({ searchParams }: { searchParams: { data: string } 
     const [loading, setLoading] = useState(true);
     const router = useRouter()
 
+    if(searchParams.data != undefined){
+    }
+
     useEffect(() => {
         const getTasks = async () => {
             try {
@@ -115,7 +118,7 @@ export default function Page({ searchParams }: { searchParams: { data: string } 
         getTasks();
         getTeamName();
         getTeamData();
-    },);
+    }, []);
 
     const addNewTaskFunc = () => {
         router.push(`/addTask?team_id=${encodeURIComponent(searchParams.data)}`)

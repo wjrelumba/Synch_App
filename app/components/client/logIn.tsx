@@ -57,9 +57,11 @@ const LogIn = () => {
             toast.error("Please fill out all fields")
         }
     }
+    
     const signUpBtn = () => {
-        router.push('/signup')
+        router.push('/signup');
     }
+
   return (
     <>
         <ToastLayout>
@@ -81,7 +83,7 @@ const LogIn = () => {
                             <button onClick={btnFunction} className="bg-synchBlue-50 hover:bg-synchBlue-100 text-white font-bold py-3 px-4 rounded mr-1 w-44">
                                 Log in
                             </button>
-                            <button onClick={signUpBtn} className="bg-synchGray-50 hover:bg-synchGray-100 text-white font-bold py-3 px-4 rounded ml-1 w-44">
+                            <button type='button' onClick={signUpBtn} className="bg-synchGray-50 hover:bg-synchGray-100 text-white font-bold py-3 px-4 rounded ml-1 w-44">
                                 Sign Up
                             </button>
                         </div>

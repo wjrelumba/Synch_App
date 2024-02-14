@@ -7,6 +7,7 @@ import { toast } from 'react-toastify'
 export default function Page({ searchParams }: { searchParams: { team_id: string } }) {
     const [taskName, setTaskName] = useState<any>('')
     const router = useRouter()
+    if(searchParams.team_id != undefined){}
     const successFunction = () => {
       const btnAddRef:any = document.getElementById('addBtn')
       const taskNameRef:any = document.getElementById('taskNameInput')

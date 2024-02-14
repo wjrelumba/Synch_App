@@ -15,7 +15,9 @@
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const cookieResponse = await fetch('/api/cookieChecker');
+          const cookieResponse = await fetch('/api/cookieChecker', {
+            method: "POST"
+          });
           const cookieValue = await cookieResponse.json();
           const dataToSend: UserData = {
             user_id: cookieValue,
@@ -76,8 +78,8 @@
               <ul className="flex flex-wrap justify-center">
                   {groupsData.map((group: any) => (
                       <Link key={group.team_id} href={`/team-group?data=${encodeURIComponent(group.team_id)}`}>
-                          <div className= 'bg-synchBlue-50 rounded-lg p-5 border-black mb-5 mr-5 inline-block hover:bg-synchBlue-100 font-mono h-[5rem] w-[20rem]'>
-                              <li className="flex justify-center items-center font-mono whitespace-normal">{group.team_name}</li>
+                          <div className= 'bg-synchBlue-50 rounded-lg p-5 border-black mb-5 mr-5 inline-block hover:bg-synchBlue-100 h-[5rem] w-[20rem]'>
+                            <li className="flex justify-center items-center font-mono whitespace-normal truncate">{group.team_name}</li>
                           </div>
                       </Link>
                   ))}
