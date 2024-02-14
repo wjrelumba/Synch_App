@@ -18,11 +18,11 @@ export default function CreateTeamForm() {
         return () => clearTimeout(timer);
     }, []);
 
-    const teamNameHandler = (e) => {
+    const teamNameHandler = (e:any) => {
         setTeamName(e.target.value);
     }
 
-    const teamIDHandler = (e) => {
+    const teamIDHandler = (e:any) => {
         setTeamID(e.target.value);
     }
 

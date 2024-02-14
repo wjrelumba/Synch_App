@@ -2,7 +2,7 @@
 import Navbar from '@/app/components/client/navbar'
 import React, { useEffect, useState } from 'react'
 
-export default function page() {
+export default function Page() {
     const [userData, setUserData] = useState<any>(null)
 
     useEffect(() => {
