@@ -9,7 +9,6 @@ export default function LogoutBtn() {
             const response = await fetch('api/deleteSession')
             const result = await response.json()
             router.push('/')
-            console.log(result)
         } catch (error) {
             
         }

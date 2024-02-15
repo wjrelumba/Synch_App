@@ -43,12 +43,14 @@ const LogIn = () => {
                 })
                 const result = await response.json()
                 if(result.success !== undefined){
-                    setTimeout(() => { router.push('/dashboard') }, 500)
+                    toast.success(result.success)
+                    const btnRef:any = document.getElementById('loginBtn')
+                    btnRef.disabled = true
+                    setTimeout(() => { router.push('/dashboard') }, 2000)
                 }
                 if(result.error !== undefined){
                     toast.error(result.error)
                 }
-                console.log(result)
             } catch (error) {
                 console.log(error)
             }
@@ -84,7 +86,7 @@ const LogIn = () => {
                                 <input type="password" name="password" id="password" onChange={passHandler} className="block bg-gray-400 mb-4 px-2 py-3 rounded-lg" />
                                 </div>
                                 <div className='flex flex-row justify-between'>
-                                    <button onClick={btnFunction} className="bg-synchBlue-50 hover:bg-synchBlue-100 text-white font-bold py-3 px-4 rounded mr-1 w-44">
+                                    <button onClick={btnFunction} id='loginBtn' className="bg-synchBlue-50 hover:bg-synchBlue-100 text-white font-bold py-3 px-4 rounded mr-1 w-44">
                                         Log in
                                     </button>
                                     <button type='button' onClick={signUpBtn} className="bg-synchGray-50 hover:bg-synchGray-100 text-white font-bold py-3 px-4 rounded ml-1 w-44">

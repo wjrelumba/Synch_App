@@ -34,7 +34,7 @@ export async function POST(req: NextRequest){
                         path: '/'
                     })
     
-                    return NextResponse.json({success: "Server responded with status 200"})
+                    return NextResponse.json({success: "User Successfully logged in"})
                 }else{
                     console.log("Wrong password")
                     return NextResponse.json({error: "Wrong Password"})
