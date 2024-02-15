@@ -4,6 +4,7 @@ import ToastLayout from '../components/essentials/toastlayout';
 import Navbar from '../components/client/navbar';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
 
 export default function CreateTeamForm() {
     const router = useRouter()
@@ -26,9 +27,30 @@ export default function CreateTeamForm() {
         setTeamID(e.target.value);
     }
 
-    const btnFunc = () => {
-        // Your logic for form submission
-        console.log('Form submitted');
+    const btnFunc = async () => {
+        if(teamName != "" && teamID != ""){
+            try {
+                const sendData = {
+                    team_name: teamName,
+                    team_id: teamID
+                }
+                const response = await fetch('/api/newTeam', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(sendData)
+                })
+                const result = await response.json()
+                const btnRef:any = document.getElementById('createTeam')
+                toast.success(result)
+                btnRef.disabled = true;
+                setTimeout(() => { router.push('/dashboard') }, 2000)
+                console.log(result)
+            } catch (error) {
+                
+            }
+        }
     }
 
     const cnclBtn = () => {
@@ -45,7 +67,7 @@ export default function CreateTeamForm() {
                     <input type="text" className="border text-black border-synchGray-100 rounded px-4 py-2 mb-4 w-full" onBlur={teamNameHandler} placeholder="Team Name" required />
                     <label htmlFor="teamID" className="block font-mono mb-2">Team ID:</label>
                     <input type="text" className="border text-black border-gray-300 rounded px-4 py-2 mb-4 w-full" onBlur={teamIDHandler} placeholder="Team ID" required />
-                    <button onClick={btnFunc} className="bg-synchBlue-50 hover:bg-synchBlue-100 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-4">Create Team</button>
+                    <button onClick={btnFunc} id='createTeam' className="bg-synchBlue-50 hover:bg-synchBlue-100 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-4">Create Team</button>
                     <button onClick={cnclBtn} className="bg-synchGray-150 hover:bg-synchGray-200 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Cancel</button>
                 </div>
             </div>
