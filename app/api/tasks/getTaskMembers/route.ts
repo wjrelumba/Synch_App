@@ -12,8 +12,10 @@ export async function POST(req: NextRequest){
             const [taskMemberResult] = <any> await (await conn).query(taskMemberQuery)
             console.log('Task Members: ',taskMemberResult)
             if(taskMemberResult.length > 0){
+                (await conn).end()
                 return NextResponse.json(taskMemberResult)
             } else {
+                (await conn).end()
                 return NextResponse.json({})
             }
         } catch (error) {

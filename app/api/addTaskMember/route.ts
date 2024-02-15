@@ -17,12 +17,14 @@ export async function POST(req: NextRequest){
             const [isUserInTaskResult] = <any> await (await conn).query(isUserInTaskQuery)
             console.log("Is user part: ", isUserPartResult)
             if(isUserInTaskResult.length > 0){
+                (await conn).end()
                 return NextResponse.json({error: 'Already part of the task'})
             }
             else {
                 if(isUserPartResult.length > 0){
                     const addMemberQuery = `INSERT INTO task_members_list (task_id, user_id) VALUES ('${dataReceived.task_id}', '${dataReceived.username}')`
                     const addMemberVar = await (await conn).query(addMemberQuery)
+                    ;(await conn).end()
                     return NextResponse.json({success: "Teammate successfully included"})
                 }else {
                     return NextResponse.json({error: "User is not part of the team."})

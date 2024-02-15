@@ -9,8 +9,10 @@ export async function POST(req: NextRequest){
     const [teamIDResult] = <any> await (await conn).query(teamIDQuery)
     console.log("Length is: ",teamIDResult)
     if(teamIDResult.length > 0){
+        (await conn).end()
         return NextResponse.json({error: "Team ID is already taken. Please choose another"})
     } else {
+        (await conn).end()
         return NextResponse.json({message: "Team ID is available, proceed to create team"})
     }
 }

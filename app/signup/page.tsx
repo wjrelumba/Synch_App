@@ -92,32 +92,32 @@ const SignUp = () => {
         <ToastLayout>
         <div className="flex flex-col items-center justify-center h-screen">
             <h1 className="text-3xl mb-8 font-mono">Create an account to start using Synch</h1>
-            <div className="bg-synchGray-100 rounded-lg p-8 w-full max-w-md"> 
+            <div className="bg-synchGray-100 rounded-3xl p-8 w-full max-w-md"> 
                 <div className="flex flex-col mb-4"> 
                     <label htmlFor="name" className="font-mono mb-2">Name:</label>
-                    <input type="text" onBlur={nameHandler} className="text-black border border-gray-400 rounded px-3 py-2" required/>
+                    <input type="text" onBlur={nameHandler} className="text-black border border-gray-400 rounded-xl px-3 py-2" required/>
                 </div>
                 <div className="flex flex-col mb-4">
                     <label htmlFor="uname" className="font-mono mb-2">Username:</label>
-                    <input type="text" onBlur={unameHandler} className="text-black border border-gray-400 rounded px-3 py-2" required/>
+                    <input type="text" onBlur={unameHandler} className="text-black border border-gray-400 rounded-xl px-3 py-2" required/>
                 </div>
                 <div className="flex flex-col mb-4">
                     <label htmlFor="org" className="font-mono mb-2">Organization:</label>
-                    <input type="text" onBlur={orgHandler} className="text-black border border-gray-400 rounded px-3 py-2" required/>
+                    <input type="text" onBlur={orgHandler} className="text-black border border-gray-400 rounded-xl px-3 py-2" required/>
                 </div>
                 <div className="flex flex-col mb-4">
                     <label htmlFor="pass" className="font-mono mb-2">Password:</label>
-                    <input type="password" onBlur={passHandler} className="text-black border border-gray-400 rounded px-3 py-2" required/>
+                    <input type="password" onBlur={passHandler} className="text-black border border-gray-400 rounded-xl px-3 py-2" required/>
                 </div>
                 <div className="flex flex-col mb-4">
                     <label htmlFor="verify-pass" className="font-mono mb-2">Verify Password:</label>
-                    <input type="password" onBlur={passVerifyHandler} className="text-black border border-gray-400 rounded px-3 py-2" required/>
+                    <input type="password" onBlur={passVerifyHandler} className="text-black border border-gray-400 rounded-xl px-3 py-2" required/>
                 </div>
                 <div className='flex justify-center'>
-                    <button onClick={submit} className="bg-synchBlue-50 font-mono hover:bg-synchBlue-100 min-w-40 text-white font-bold py-2 px-4 rounded mr-1">
+                    <button onClick={submit} className="bg-synchBlue-50 font-mono hover:bg-synchBlue-100 min-w-40 text-white font-bold py-2 px-4 rounded-xl mr-1">
                         Create Account
                     </button>
-                    <button onClick={homePageBtn} type='button' className="bg-synchGray-150 font-mono hover:bg-synchGray-200 min-w-40 text-white font-bold py-2 px-4 rounded ml-1">
+                    <button onClick={homePageBtn} type='button' className="bg-synchGray-150 font-mono hover:bg-synchGray-200 min-w-40 text-white font-bold py-2 px-4 rounded-xl ml-1">
                     Go Back
                     </button>
                 </div>

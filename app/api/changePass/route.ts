@@ -24,9 +24,11 @@ export async function POST(req: NextRequest){
                 const isOldPassSame = await bcrypt.compare(dataReceived?.oldPass, resultQuery[0].pass)
                 if(isOldPassSame == true){
                     console.log("Same")
+                    ;(await conn).end()
                     return NextResponse.json({success: "Correct Password"})
                 }
                 else {
+                    (await conn).end()
                     return NextResponse.json({error: "Incorrect Password"})
                 }
             }
@@ -36,6 +38,7 @@ export async function POST(req: NextRequest){
                     console.log("Hashed: ",hashedPass)
                     const newPassQuery = `UPDATE secret_creds SET user_id='${userNameResult[0].username}', pass='${hashedPass}' WHERE user_id = '${userNameResult[0].username}'`
                     const newPassVar = await (await conn).query(newPassQuery)
+                    ;(await conn).end()
                     return NextResponse.json({success: "Password successfully changed"})
                 } catch (error) {
                     console.log(error)   

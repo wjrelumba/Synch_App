@@ -20,7 +20,7 @@ export async function POST(req: NextRequest){
             const insertPassData = await (await conn).query(passQuery);
             const [rows, fields] = await (await conn).query(dataQuery);
             console.log(rows);
-
+            (await conn).end()
             return NextResponse.json({ success: 'Server working' }, { status: 200 })
         } catch (error) {
             console.log(error)

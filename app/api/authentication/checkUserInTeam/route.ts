@@ -22,10 +22,12 @@ export async function POST(req: NextRequest) {
 
             if(credsResult.length > 0){
                 console.log("User authenticated")
+                ;(await conn).end()
                 return NextResponse.json({authenticated: true})
             }
             else{
                 console.log("User not authenticated")
+                ;(await conn).end()
                 return NextResponse.json({authenticated: false})
             }
         }

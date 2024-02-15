@@ -186,56 +186,84 @@ export default function TasksDetails({ searchParams }: { searchParams: { task_id
         {!loading && taskName && (
             <>
             <Navbar />
-                <h1>Task Name: {taskName}</h1>
+                <div className='flex justify-center'>
+                    <div>
+                        <h1 className='font-mono text-2xl mb-10 mt-10'>{taskName}</h1>
+                    </div>
+                </div>
             </>
         )}
         {!loading && members && (
             <>
-            <ul>
-                {members.map((member:any) => (
-                    <li key={member.username}>- {member.name}</li>
-                ))}
-            </ul>
-            <button onClick={goBack}>Go back</button> <br />
-            </>
-        )}
-        <button onClick={addMember}>Add a member</button> <br />
-        <button onClick={remMember}>Remove member</button>
-        {addNewMember && (
-            <>
-                <div className='flex justify-center align-middle'>
-                    <div className='bg-synchBlue-50 rounded-lg py-20 px-20 transition-all duration-300'>
-                        <div className='flex justify-center mb-10'>
-                            <h1 className='text-3xl font-mono'>Add Member</h1>
+            <div className='flex justify-start ml-5'>
+                <div className='flex bg-synchGray-100 rounded-xl w-[25%] h-[20rem] flex-col'>
+                    <div className='flex flex-col mt-10 items-center'>
+                        <h1 className='text-xl font-mono mb-2'>Members:</h1>
+                        <ul>
+                        {members.map((member:any) => (
+                            <li className='font-mono' key={member.username}>{member.name}</li>
+                        ))}
+                        </ul>
+                        <div className='flex h-[10rem] items-end justify-center mr-1 ml-1 w-full px-1'>
+                            <button className='bg-synchBlue-50 hover:bg-synchBlue-100 py-2 px-3 rounded-lg font-mono' onClick={goBack}>Go back</button> <br />
+                            <button className='bg-synchBlue-50 hover:bg-synchBlue-100 py-2 px-3 rounded-lg font-mono' onClick={addMember}>Add a member</button>
+                            <button className='bg-synchBlue-50 hover:bg-synchBlue-100 py-2 px-3 rounded-lg font-mono' onClick={remMember}>Remove member</button>
                         </div>
-                        <form method='POST' id='addMemberForm'>
-                            <div className='flex flex-col mb-8'>
-                                <label htmlFor="username" className='text-2xl mb-1'>Username: </label>
-                                <input type="text" name="username" id="remUsername" className='text-black border-synchGray-200 rounded px-3 py-2' onChange={unameHandler}/>
-                            </div>
-                            <button onClick={btnSubmit} id='addMemBtn' className='px-1 py-2 bg-synchBlue-50 rounded-lg hover:bg-synchBlue-100'>Add the member to task</button>
-                        </form>
                     </div>
                 </div>
+            </div>
             </>
+        )}
+        {addNewMember && (
+            <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 bg-black bg-opacity-50'>
+                <div className='bg-synchBlue-50 rounded-lg py-20 px-20 transition-all duration-300'>
+                    <div className='flex justify-center mb-10'>
+                        <h1 className='text-3xl font-mono'>Add Member</h1>
+                    </div>
+                    <form method='POST' id='addMemberForm'>
+                        <div className='flex flex-col mb-8'>
+                            <label htmlFor="username" className='text-2xl mb-1'>Username: </label>
+                            <input type="text" name="username" id="remUsername" className='text-black border-synchGray-200 rounded px-3 py-2' onChange={unameHandler}/>
+                        </div>
+                        <button onClick={btnSubmit} id='addMemBtn' className='px-1 py-2 font-mono bg-synchBlue-50 rounded-lg hover:bg-synchBlue-100'>Add the member to task</button>
+                    </form>
+                    <button className='bg-synchBlue-50 hover:bg-synchBlue-100 py-2 px-1 rounded-lg font-mono' onClick={addMember}>Cancel</button>
+                </div>
+            </div>
         )}
         {removeMember && (
-            <>
-                <div className='flex justify-center align-middle'>
-                    <div className='bg-synchBlue-50 rounded-lg py-20 px-20 transition-all duration-300'>
+            <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 bg-black bg-opacity-50'>
+                <div className='bg-synchBlue-50 rounded-lg py-20 px-20 transition-all duration-300'>
                     <div className='flex justify-center mb-10'>
-                            <h1 className='text-3xl font-mono'>Remove Member</h1>
-                        </div>
-                        <form method='POST' id='remMemberForm'>
-                            <div className='flex flex-col mb-8'>
-                                <label htmlFor="username" className='text-2xl'>Username: </label>
-                                <input type="text" name="username" id="username" className='text-black border-synchGray-200 rounded px-3 py-2' onChange={unameHandler}/>
-                            </div>
-                            <button onClick={remBtn} id='remMemBtn' className='px-1 py-2 bg-synchBlue-50 rounded-lg hover:bg-synchBlue-100'>Remove member</button>
-                        </form>
+                        <h1 className='text-3xl font-mono'>Remove Member</h1>
                     </div>
+                    <form method='POST' id='remMemberForm'>
+                        <div className='flex flex-col mb-8'>
+                            <label htmlFor="username" className='text-2xl'>Username: </label>
+                            <input type="text" name="username" id="username" className='text-black border-synchGray-200 rounded px-3 py-2' onChange={unameHandler}/>
+                        </div>
+                        <button onClick={remBtn} id='remMemBtn' className='px-1 font-mono py-2 bg-synchBlue-50 rounded-lg hover:bg-synchBlue-100'>Remove member</button>
+                    </form>
+                    <button className='bg-synchBlue-50 hover:bg-synchBlue-100 py-2 px-1 rounded-lg font-mono' onClick={remMember}>Cancel</button>
                 </div>
-            </>
+            </div>
+        )}
+        {removeMember && (
+            <div className='fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 bg-black bg-opacity-50'>
+                <div className='bg-synchBlue-50 rounded-lg py-20 px-20 transition-all duration-300'>
+                    <div className='flex justify-center mb-10'>
+                        <h1 className='text-3xl font-mono'>Remove Member</h1>
+                    </div>
+                    <form method='POST' id='remMemberForm'>
+                        <div className='flex flex-col mb-8'>
+                            <label htmlFor="username" className='text-2xl'>Username: </label>
+                            <input type="text" name="username" id="username" className='text-black border-synchGray-200 rounded px-3 py-2' onChange={unameHandler}/>
+                        </div>
+                        <button onClick={remBtn} id='remMemBtn' className='px-1 font-mono py-2 bg-synchBlue-50 rounded-lg hover:bg-synchBlue-100'>Remove member</button>
+                    </form>
+                    <button className='bg-synchBlue-50 hover:bg-synchBlue-100 py-2 px-1 rounded-lg font-mono' onClick={remMember}>Cancel</button>
+                </div>
+            </div>
         )}
     </ToastLayout>
   )

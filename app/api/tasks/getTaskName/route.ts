@@ -10,12 +10,14 @@ export async function POST(req: NextRequest){
             const taskNameQuery = `SELECT taskg.task_name FROM task_names_group as taskg WHERE taskg.task_id = '${dataReceived.task_id}'`
             const [taskNameResult] = <any> await (await conn).query(taskNameQuery)
             console.log(taskNameResult)
+            ;(await conn).end()
             return NextResponse.json(taskNameResult)
         } catch (error) {
             console.log(error)
         } finally {
             (await conn).end()
         }
+        ;(await conn).end()
         return NextResponse.json("Hello world")
     }
 }

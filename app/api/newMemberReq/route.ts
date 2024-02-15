@@ -50,13 +50,16 @@ export async function POST(req: NextRequest){
                 console.log("This runs")
                 if(teamMemberResult.length > 0) {
                     if(dataReceived.username == cookieResult[0].username){
+                        (await conn).end()
                         return NextResponse.json({message: "That is your username."})
                     } else if(teamMemberResult[0].user_id == dataReceived.username && teamMemberResult[0].team_id == dataReceived.team_id){
+                        (await conn).end()
                         return NextResponse.json({message: "You are inviting a user that is already part of the team."})
                     } else {
                         if(checkUserResult.length > 0){
                             console.log("There is data")
                             if(dataReceived.username == cookieResult[0].username){
+                                (await conn).end()
                                 return NextResponse.json({message: "That is your username."})
                             } else {
                                 if(invitationExistResult.length !== 0){
@@ -65,6 +68,7 @@ export async function POST(req: NextRequest){
                                         if(invitationExistResult[i].owner == dataReceived.username){
                                             if(invitationExistResult[i].team_id == dataReceived.team_id){
                                                 if(invitationExistResult[i].sent_from == cookieResult[0].username){
+                                                    (await conn).end()
                                                     return NextResponse.json({message: `An invitation to ${dataReceived.username} already exists`})
                                                 }
                                             }
@@ -76,11 +80,13 @@ export async function POST(req: NextRequest){
                                 const reqDetailsQuery = `INSERT INTO request_details (req_id, req_info) VALUES ('${randomBase64Value}', '${inviteMessage}')`
                                 const [reqDetailVar] = await (await conn).query(reqDetailsQuery)
                                 console.log("Method is correct")
+                                ;(await conn).end()
                                 return NextResponse.json({receiver: dataReceived.username,
                                                             sender: cookieResult[0].username})
                             }            
                         } else if (checkUserResult.length == 0){
                             console.log("There is no user")
+                            ;(await conn).end()
                             return NextResponse.json({message: "User does not exist."})
                         }
                     }
@@ -88,6 +94,7 @@ export async function POST(req: NextRequest){
                     if(checkUserResult.length > 0){
                         console.log("There is data")
                         if(dataReceived.username == cookieResult[0].username){
+                            (await conn).end()
                             return NextResponse.json({message: "That is your username."})
                         } else {
                             if(invitationExistResult.length !== 0){
@@ -96,6 +103,7 @@ export async function POST(req: NextRequest){
                                     if(invitationExistResult[i].owner == dataReceived.username){
                                         if(invitationExistResult[i].team_id == dataReceived.team_id){
                                             if(invitationExistResult[i].sent_from == cookieResult[0].username){
+                                                (await conn).end()
                                                 return NextResponse.json({message: `An invitation to ${dataReceived.username} already exists`})
                                             }
                                         }
@@ -107,11 +115,13 @@ export async function POST(req: NextRequest){
                             const reqDetailsQuery = `INSERT INTO request_details (req_id, req_info) VALUES ('${randomBase64Value}', '${inviteMessage}')`
                             const [reqDetailVar] = await (await conn).query(reqDetailsQuery)
                             console.log("Method is correct")
+                            ;(await conn).end()
                             return NextResponse.json({receiver: dataReceived.username,
                                                         sender: cookieResult[0].username})
                         }            
                     } else if (checkUserResult.length == 0){
                         console.log("There is no user")
+                        ;(await conn).end()
                         return NextResponse.json({message: "User does not exist."})
                     }
                 }

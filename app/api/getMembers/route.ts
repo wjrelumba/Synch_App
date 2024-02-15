@@ -35,6 +35,7 @@ export async function POST(req: NextRequest){
             
             for(var i=0; i<queryResult.length; i++){
                 if(queryResult[i].id == userLoggedIn.value){
+                    (await conn).end()
                     return NextResponse.json(dataArray)
                 }
             }

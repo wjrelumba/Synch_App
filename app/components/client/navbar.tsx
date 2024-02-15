@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Sidebar from './sidebar';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -27,7 +28,7 @@ const Navbar = () => {
         <div className="flex flex-grow justify-center"> {/* Added flex-grow and justify-center */}
           <Link href="/">
             <div className='flex max-w-[6rem]'>
-              <img src="../synch-logo.png" alt="" />
+              <Image src='/synch-logo.png' alt='' width='100' height='100'/>
             </div>
           </Link>
         </div>

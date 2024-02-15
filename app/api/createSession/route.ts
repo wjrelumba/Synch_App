@@ -33,13 +33,15 @@ export async function POST(req: NextRequest){
                         httpOnly: true,
                         path: '/'
                     })
-    
+                    ;(await conn).end()
                     return NextResponse.json({success: "User Successfully logged in"})
                 }else{
                     console.log("Wrong password")
+                    ;(await conn).end()
                     return NextResponse.json({error: "Wrong Password"})
                 }
             }else{
+                (await conn).end()
                 return NextResponse.json({error: "Username or Password is wrong"})
             }
         } catch (error) {

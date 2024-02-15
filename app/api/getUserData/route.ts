@@ -12,6 +12,7 @@ export async function POST(req: NextRequest){
             const getUserDataQuery = `SELECT c.name, c.username, c.organization FROM clients_users as c where c.id = '${cookieValue.value}'`
             const [getUserDataResult] = await (await conn).query(getUserDataQuery)
             console.log("Data result: ",getUserDataResult)
+            ;(await conn).end()
             return NextResponse.json(getUserDataResult)
         } catch (error) {
             console.log(error)

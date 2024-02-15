@@ -28,8 +28,10 @@ export async function POST(req: NextRequest){
                     groupData: rows,
                     userData: userResult
                 }
+                ;(await conn).end()
                 return NextResponse.json(sendData)
             } else {
+                (await conn).end()
                 return NextResponse.json({message: "You are accessing this content without permission"})
             }
         } catch (error) {

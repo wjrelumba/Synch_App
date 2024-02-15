@@ -11,6 +11,7 @@ export const POST = async (req: NextRequest) => {
 
         const [reqDetailResult] = <any> await (await conn).query(reqDetailQuery)
         console.log(reqDetailResult)
+        ;(await conn).end()
         return NextResponse.json(reqDetailResult)
     }
 }

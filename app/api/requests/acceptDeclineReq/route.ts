@@ -18,6 +18,7 @@ export const POST = async (req: NextRequest) => {
                 const deleteReqDetailsQuery = `DELETE FROM request_details WHERE request_details.req_id = '${dataReceived.req_id}'`
                 const deleteReqVar = await (await conn).query(deleteReqQuery)
                 const deleteReqDetailsVar = await (await conn).query(deleteReqDetailsQuery)
+                ;(await conn).end()
                 return NextResponse.json(`You are now added to ${teamUserIDResult[0].team_id}`)
             }
             if(dataReceived.accept == false){
@@ -28,6 +29,7 @@ export const POST = async (req: NextRequest) => {
                 const deleteReqDetailsQuery = `DELETE FROM request_details WHERE request_details.req_id = '${dataReceived.req_id}'`
                 const deleteReqVar = await (await conn).query(deleteReqQuery)
                 const deleteReqDetailsVar = await (await conn).query(deleteReqDetailsQuery)
+                ;(await conn).end()
                 return NextResponse.json(`Invitation to ${teamUserIDResult[0].team_id} has been rejected`)
             }
         } catch (error) {

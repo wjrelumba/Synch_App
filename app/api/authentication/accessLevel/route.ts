@@ -23,10 +23,13 @@ export async function POST(req: NextRequest) {
         console.log("Access Level: ",accessLevelTeamIDResult)
 
         if(accessLevelTeamNameResult.length > 0){
+            (await conn).end()
             return NextResponse.json(accessLevelTeamNameResult)
         } else if(accessLevelTeamIDResult.length > 0){
+            (await conn).end()
             return NextResponse.json(accessLevelTeamIDResult)
         } else {
+            (await conn).end()
             return NextResponse.json({})
         }
     }

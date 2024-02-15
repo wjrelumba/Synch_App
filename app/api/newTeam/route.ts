@@ -18,6 +18,7 @@ export const POST = async (req: NextRequest) => {
 
         const addTeamOwnerQuery = `INSERT INTO team_members_list (user_id, team_id, access_level) VALUES ('${userNameResult[0].username}', '${dataReceived.team_id}', 3)`
         const addTeamOwnerVar = await (await conn).query(addTeamOwnerQuery)
+        ;(await conn).end()
         return NextResponse.json(`${dataReceived.team_name} successfully created.`)
     }
 }

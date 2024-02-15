@@ -10,8 +10,10 @@ export async function POST(req: NextRequest){
             const userNameVerifyQuery = `SELECT c.username FROM clients_users as c WHERE c.username = '${dataReceived.unameVerify}'`
             const [userNameVerifyResult] = <any> await (await conn).query(userNameVerifyQuery)
             if(userNameVerifyResult.length > 0){
+                (await conn).end()
                 return NextResponse.json({error: "Username is already taken. Please choose another"})
             } else {
+                (await conn).end()
                 return NextResponse.json({message: "Username is available, proceed to create account"})
             }
         } catch (error) {

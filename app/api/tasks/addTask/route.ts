@@ -12,8 +12,10 @@ export async function POST(req: NextRequest){
             const newTaskQuery = `INSERT INTO task_names_group (task_name, task_id, team_id) VALUES ('${dataReceived.task_name}', '${randomBase64Value}', '${dataReceived.team_id}')`
             const [newTaskVar] = <any> await (await conn).query(newTaskQuery)
             console.log(dataReceived, randomBase64Value)
+            ;(await conn).end()
             return NextResponse.json({success: `Task ${dataReceived.task_name} has been successfully created.`})
         } catch (error) {
+            (await conn).end()
             return NextResponse.json({error: `Task creation failed`})
         } finally {
             (await conn).end()

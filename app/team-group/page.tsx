@@ -187,13 +187,17 @@ export default function Page({ searchParams }: { searchParams: { data: string } 
                     <h1 className='text-2xl font-mono'>No tasks available...</h1>
                 </div>
             )}
+            <div>
+            <div className='w-[50vw] h-[50vh] flex flex-wrap justify-center'>
             {tasks.map((task: any) => (
-                <div key={task.task_id} className="bg-synchGray-100 p-4 rounded-lg w-100">
-                    <Link href={`/taskDetails?task_id=${encodeURIComponent(task.task_id)}`}>
+                <Link key={task.task_id} href={`/taskDetails?task_id=${encodeURIComponent(task.task_id)}`}>
+                    <div className="bg-synchGray-50 p-4 rounded-lg w-100 mr-1 mb-1">
                         <Tasks task_id={task.task_id} />
-                    </Link>
-                </div>
+                    </div>
+                </Link>
             ))}
+            </div>
+            </div>
             </div>
             </div>
           </>
