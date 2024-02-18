@@ -56,8 +56,8 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         </li>
       </ul>
       <LogoutBtn />
-      <div className='text-sm absolute bottom-4 left-11'>
-        Elumba, De Guia &copy; 2024
+      <div className='text-xs absolute bottom-4 left-3'>
+        Copyright &copy; Synch 2024. Elumba, De Guia
       </div>
     </div>
   );

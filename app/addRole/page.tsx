@@ -60,10 +60,10 @@ export default function Page({ searchParams }: { searchParams: { team_id: string
       <div className='flex justify-center items-center mt-10'>
         <div className='flex flex-col bg-synchGray-100 rounded-lg px-10 py-6'>
           <form method='POST' id='newTaskForm'>
-            <label className='text-xl font-mono' htmlFor="taskName">Task Name: </label>
+            <label className='text-xl font-mono' htmlFor="taskName">Role Name: </label>
             <input id='taskNameInput' type="text" className='text-black font-mono rounded-lg px-3 py-1 border-yellow-700' onChange={taskNameHandler}/> <br />
             <div className='flex justify-center mt-6'>
-              <button className='bg-synchBlue-50 hover:bg-synchBlue-100 px-4 font-mono py-3 rounded-lg min-w-[9rem] mr-1' id='addBtn' onClick={btnHandler}>Add Task</button>
+              <button className='bg-synchBlue-50 hover:bg-synchBlue-100 px-4 font-mono py-3 rounded-lg min-w-[9rem] mr-1' id='addBtn' onClick={btnHandler}>Add Role</button>
               <button className='bg-synchBlue-50 hover:bg-synchBlue-100 px-4 font-mono py-3 rounded-lg min-w-[9rem] ml-1' type="button" id='goBackBtn' onClick={goBack}>Go Back</button>
             </div>
           </form> <br />

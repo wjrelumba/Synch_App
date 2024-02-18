@@ -7,6 +7,7 @@ import LogoutBtn from '../components/client/buttons/logout'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import Navbar from '../components/client/navbar'
+import CalendarPage from '../components/client/calendar/calendarPage'
 
 export default function Dashboard() {
   const router = useRouter()
@@ -40,8 +41,17 @@ export default function Dashboard() {
           )}
           {!loading && userCookie && (
             <>
-              <Navbar />
-              <CheckingGroups /> <br />
+            <div className='w-screen h-screen'>
+            <Navbar />
+              <div className='flex flex-col sm:flex-row justify-center'>
+                <div className='flex justify-start w-full sm:w-1/2'>
+                  <CheckingGroups />
+                </div>
+                <div className='flex w-full sm:w-1/2 justify-center p-2'>
+                  <CalendarPage />
+                </div>
+              </div>
+            </div>
             </>
           )}
           {!loading && !userCookie && (

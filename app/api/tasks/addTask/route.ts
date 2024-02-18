@@ -13,10 +13,10 @@ export async function POST(req: NextRequest){
             const [newTaskVar] = <any> await (await conn).query(newTaskQuery)
             console.log(dataReceived, randomBase64Value)
             ;(await conn).end()
-            return NextResponse.json({success: `Task ${dataReceived.task_name} has been successfully created.`})
+            return NextResponse.json({success: `Role ${dataReceived.task_name} has been successfully created.`})
         } catch (error) {
             (await conn).end()
-            return NextResponse.json({error: `Task creation failed`})
+            return NextResponse.json({error: `Role creation failed`})
         } finally {
             (await conn).end()
         }

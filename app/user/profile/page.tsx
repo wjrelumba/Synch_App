@@ -41,7 +41,7 @@ export default function Page() {
                 <h1 className='text-3xl font-mono'>PROFILE PAGE</h1>
             </div>
             <div className='flex justify-start'>
-            <div className='flex w-1/4 min-w-10 h-[80vh] min-h-[10vh] bg-synchGray-50'>
+            <div className='flex w-1/2 sm:w-1/4 min-w-10 h-[80vh] min-h-[10vh] bg-synchGray-50'>
                 <div className='flex flex-col w-full mt-5'>
                     <div className='flex justify-center '>
                         <button onClick={genShowBtn} className='text-xl font-mono w-full hover:bg-synchGray-100 py-2'>General</button>

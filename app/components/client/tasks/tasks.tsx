@@ -7,6 +7,7 @@ function Tasks(task_id:any) {
     const [taskName, setTaskName] = useState<any>(null)
     const [loading, setLoading] = useState<any>(true)
     const [taskQuantity, setTaskQuantity] = useState<any>(0)
+    const [doneTasks, setDoneTasks] = useState<any>(0)
 
     useEffect(() => {
         const getTaskName = async () => {
@@ -66,7 +67,8 @@ function Tasks(task_id:any) {
                     body: JSON.stringify(dataSend)
                 })
                 const result = await response.json()
-                setTaskQuantity(result)
+                setTaskQuantity(result.taskQuantity)
+                setDoneTasks(result.doneTasks)
             } catch (error) {
                 
             }
@@ -91,7 +93,7 @@ function Tasks(task_id:any) {
         <br />
         <div className='flex flex-col items-center h-full w-full'>
         {!loading && taskName && (
-            <h1 className='text-2xl font-mono mb-9'>{taskName}</h1>
+            <h1 className='text-2xl text-center font-mono mb-9'>{taskName}</h1>
         )}
         {!loading && members && (
             <>
@@ -107,7 +109,7 @@ function Tasks(task_id:any) {
             </>
         )}
         <div className='flex'>
-            <h1 className='font-mono'>0/{taskQuantity} Tasks Completed</h1>
+            <h1 className='font-mono'>{doneTasks}/{taskQuantity} Tasks Completed</h1>
         </div>
         </div>
     </div>
